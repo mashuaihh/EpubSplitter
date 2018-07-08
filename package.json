@@ -1,0 +1,25 @@
+{
+  "bin": {
+    "splitter": "./bin/demo-global.js"
+  },
+  "name": "epubsplitter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/babel index.js --out-dir lib",
+    "publish": "npm run build & npm install -g ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "epub": "^0.2.0",
+    "inquirer": "^5.2.0",
+    "node-html-parser": "^1.1.6"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
