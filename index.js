@@ -78,13 +78,14 @@ function convertSingle(epubFile, rootFolder, epubFileNameWithoutDotEpub) {
     let text = '';
     let i = 1;
     epub.flow.forEach((chapter, index) => {
-      epub.getChapterRaw(chapter.id, function(err, data){
+      epub.getChapter(chapter.id, function(err, data){
         if(err){
           console.log(err);
           return;
         }
         // 50000 characters
-        text += data;
+        const htmlNode = htmlParser.parse(data);
+        text += htmlNode.text;
         if (text.length >= BIG_SIZE) {
           fs.writeFile(`${rootFolder}/${OUTPUT_BIG_FOLDER}/${epubFileNameWithoutDotEpub}+${i++}.txt`, text,
             'utf8', (err) => {
